@@ -43,7 +43,7 @@ router.post("/", async (ctx, next) => {
 
   if (tps !== NaN && tps <= 20 && tps >= 0) {
     store.now.tps = parseFloat(tps.toFixed(3));
-    store.now.time = new Date().toLocaleString();
+    store.now.time = new Date(Date.now() + 28800000).toLocaleString();
 
     if (store.now.tps > store.highest.tps) {
       with (store) {
