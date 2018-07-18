@@ -49,7 +49,9 @@ router.post("/", async (ctx, next) => {
       with (store) {
         [highest.tps, highest.time] = [now.tps, now.time];
       }
-    } else if (store.now.tps < store.lowest.tps) {
+    }
+    
+    if (store.now.tps < store.lowest.tps) {
       with (store) {
         [lowest.tps, lowest.time] = [now.tps, now.time];
       }
