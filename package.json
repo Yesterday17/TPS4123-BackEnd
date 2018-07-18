@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0"
+  },
+  "name": "tps4123-backend",
+  "version": "1.0.0",
+  "description": "TPS for 123.",
+  "main": "index.js",
+  "repository": "https://github.com/Yesterday17/TPS4123-BackEnd.git",
+  "author": "Yesterday17 <t@yesterday17.cn>",
+  "license": "MIT"
+}
