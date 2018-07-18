@@ -2,7 +2,7 @@
 
 function main(g,q,m)
   local json = require("dkjson");
-  local ret = URLDownload("http://server.yesterday17.cn:8081/");
+  local ret =  DoHTTP("sevtps.yesterday17.cn", "GET", "/", "Content-Type: application/x-www-form-urlencoded", "",g)
   local msg = json.decode(ret);
 
   if (msg.now.time == "undefined") then
