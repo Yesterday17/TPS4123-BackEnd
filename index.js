@@ -42,8 +42,8 @@ router.post("/", async (ctx, next) => {
   console.log(`Update TPS: ${tps}`);
 
   if (tps !== NaN && tps <= 20 && tps >= 0) {
-    store.now.tps = tps;
-    store.now.time = new Date().getTime();
+    store.now.tps = tps.toFixed(3);
+    store.now.time = new Date().toLocaleString();
 
     if (store.now.tps > store.highest.tps) {
       with (store) {
