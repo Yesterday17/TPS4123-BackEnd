@@ -1,5 +1,6 @@
 const Koa = require("koa");
 const Router = require("koa-router");
+const Koabody = require("koa-body");
 const fs = require("fs");
 
 const app = new Koa();
@@ -34,8 +35,12 @@ router.get("/", async (ctx, next) => {
 });
 
 router.post("/", async (ctx, next) => {
-  console.log(`Update TPS: ${ctx.request.query.tps}`);
-  let tps = parseFloat(ctx.request.query.tps);
+  let tps =
+    ctx.request.query === {}
+      ? parseFloat(ctx.request.query.tps)
+      : parseFloat(ctx.request.body.tps);
+  console.log(`Update TPS: ${tps}`);
+
   if (tps !== NaN && tps <= 20 && tps >= 0) {
     store.now.tps = tps;
     store.now.time = new Date().getTime();
@@ -61,4 +66,5 @@ router.post("/", async (ctx, next) => {
   ctx.body = JSON.stringify({ message: "Illegal visit!" }, null, 2);
 });
 
+app.use(Koabody());
 app.use(router.routes()).listen(8081);
